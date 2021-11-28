@@ -6,7 +6,7 @@ import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
 const Header: React.FC = () => {
   const numberOfItemsInCart = 0;
   return (
-    <header className="flex items-center justify-between h-20 sticky z-50">
+    <header className="bg-white sticky shadow-lg top-0 w-full flex items-center justify-between h-20 z-50 m-auto px-10 lg:px-20">
       {/* Left Side of Navbar */}
       <div className="flex items-center">
         <Logo />

@@ -2,13 +2,14 @@ import Image from "next/image";
 import { Eye, Star } from "react-feather";
 import { StarIcon } from "@heroicons/react/solid";
 
-export const ProductsGrid: React.FC<{ noOfItems: number }> = ({
+export const ProductsGrid: React.FC<{ noOfItems: number; imagePath?: string }> = ({
   noOfItems,
+  imagePath
 }) => {
   const products = [];
 
   for (let i = 0; i < noOfItems; i++) {
-    products.push(<ProductCard key={i}/>);
+    products.push(<ProductCard key={i} imagePath={imagePath}/>);
   }
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -19,13 +20,13 @@ export const ProductsGrid: React.FC<{ noOfItems: number }> = ({
 
 export default ProductsGrid;
 
-export const ProductCard: React.FC = () => {
+export const ProductCard: React.FC<{imagePath?: string}> = ({imagePath="/static/images/product-sample.jpg"}) => {
   return (
     <div className="group overflow-visible group">
       {/* Image */}
       <div className="relative h-[400px] overflow-visible">
         <Image
-          src="/static/images/product-sample.jpg"
+          src={imagePath}
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
@@ -40,7 +41,7 @@ export const ProductCard: React.FC = () => {
       <div className="flex justify-between items-center">
         <div>
           <p className="font-bold text-xl mt-3">Aqua Globes</p>
-          <p className="font-semibold text-lg text-yellow-500 mt-4">$125.00</p>
+          <p className="font-semibold text-lg text-yellow-500 mt-4 text-left">$125.00</p>
         </div>
 
         <button className="primary-btn h-14 text-white opacity-0 group-hover:opacity-100 transition ease-in-out duration-200">

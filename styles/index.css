@@ -1,25 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
 
-@layer components{
-  .nav-items a{
+@layer components {
+  .nav-items a {
     @apply mr-4 lg:mr-6 xl:mr-8 font-normal md:text-sm lg:text-base;
   }
 
-  .primary-btn{
+  .primary-btn {
     @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white;
+  }
+
+  .footer > div {
+    @apply  col-span-6 sm:col-span-3 md:col-span-2 xl:col-span-1 first:col-span-6 md:first:col-span-4 xl:first:col-span-2 mt-10 first:-mt-5;
+  }
+
+  .footer h5 {
+    @apply font-bold text-xl md:text-2xl mb-2;
+  }
+  .footer p {
+    @apply text-base cursor-pointer;
   }
 }
 
-body{
-  font-family: 'Jost', sans-serif;
+body {
+  font-family: "Jost", sans-serif;
 }
 
-.kumb-sans-font{
-  font-family: 'Kumbh Sans', sans-serif;
+.kumb-sans-font {
+  font-family: "Kumbh Sans", sans-serif;
 }

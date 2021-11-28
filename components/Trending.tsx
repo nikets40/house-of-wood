@@ -9,7 +9,7 @@ const Trending: React.FC = () => {
           Sitewide discount and save up to 25% on all trending products.
         </p>
         <div className="mt-10"/>
-        <ProductsGrid noOfItems={4} />
+        <ProductsGrid noOfItems={4} imagePath="/static/images/product-sample2.jpg" />
       </div>
     </div>
   );
