@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
-    <div className="w-full grid grid-cols-5 gap-6 jost-font">
+    <main className="w-full grid grid-cols-5 gap-6 jost-font">
       {/* First Banner */}
       <div className="col-span-5 h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] relative">
         <Image
@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
           <p className="text-xl font-bold mt-2 mb-4">
             <span className="font-normal">Starts from</span> $39.99
           </p>
-          <button className="bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl">
+          <button className="primary-btn">
             Shop Now
           </button>
         </div>
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
           <p className="text-lg  md:text-xl lg:text-lg font-bold mt-1 mb-4">
             <span className="font-normal">Starts from</span> $39.99
           </p>
-          <button className="bg-[#fa8c16] text-white hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl">
+          <button className="primary-btn">
             Shop Now
           </button>
         </div>
@@ -67,12 +67,12 @@ const Hero: React.FC = () => {
           <p className="text-lg  md:text-xl lg:text-lg font-bold mt-1 mb-4">
             <span className="font-normal">Starts from</span> $39.99
           </p>
-          <button className="bg-[#fa8c16] text-white hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl">
+          <button className="primary-btn">
             Shop Now
           </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -10,12 +10,16 @@
   .nav-items a{
     @apply mr-4 lg:mr-6 xl:mr-8 font-normal md:text-sm lg:text-base;
   }
+
+  .primary-btn{
+    @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white;
+  }
 }
 
 body{
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
-.jost-font{
-  font-family: 'Jost', sans-serif;
+.kumb-sans-font{
+  font-family: 'Kumbh Sans', sans-serif;
 }
