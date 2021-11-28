@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className="m-auto px-10 lg:px-20">
         <Head>
         <link rel="shortcut icon" href="/favicon.png" />
+        <title>House of Wood</title>
         </Head>
         <Header/>
       <Component {...pageProps} />
