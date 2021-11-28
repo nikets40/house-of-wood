@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+@layer components{
+  .nav-items a{
+    @apply mr-8 font-normal text-base
+  }
+}
+
+body{
+  font-family: 'Kumbh Sans', sans-serif;
+}
