@@ -2,17 +2,17 @@ import Image from "next/image";
 import { Eye, Star } from "react-feather";
 import { StarIcon } from "@heroicons/react/solid";
 
-export const ProductsGrid: React.FC = () => {
+export const ProductsGrid: React.FC<{ noOfItems: number }> = ({
+  noOfItems,
+}) => {
+  const products = [];
+
+  for (let i = 0; i < noOfItems; i++) {
+    products.push(<ProductCard key={i}/>);
+  }
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+     {products}
     </div>
   );
 };
@@ -55,7 +55,8 @@ const Ratings: React.FC<{ rating: number }> = ({ rating }) => {
   const ratingIconsList = [];
   for (let i = 0; i < 5; i++) {
     ratingIconsList.push(
-      <StarIcon key={i}
+      <StarIcon
+        key={i}
         className={`h-6 ${i < rating ? "text-yellow-500" : "text-gray-400"}`}
       />
     );

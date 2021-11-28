@@ -12,7 +12,7 @@ const NewArrivals: React.FC = () => {
       </div>
 
       <div className="mt-10" />
-      <ProductsGrid />
+      <ProductsGrid noOfItems={8} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-20">
         <NewArrivalsBanner
