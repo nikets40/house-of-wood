@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactElement } from "react";
-import { LogOut, Search, ShoppingCart } from "react-feather";
+import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
 
 const Header: React.FC = () => {
   const numberOfItemsInCart = 0;
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       {/* Left Side of Navbar */}
       <div className="flex items-center">
         <Logo />
-        <Divider />
+        <Divider classname="hidden md:block md:mx-6" />
         <NavItems />
       </div>
 
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           icon={
             <div className="relative">
               <ShoppingCart className="w-6 h-6" />
-              {numberOfItemsInCart>0 && (
+              {numberOfItemsInCart > 0 && (
                 <div className="absolute -top-3 -right-3 bg-yellow-500 rounded-full flex">
                   <p className="text-[12px] text-white px-2 py-1">
                     {numberOfItemsInCart}
@@ -36,6 +36,13 @@ const Header: React.FC = () => {
           link="/"
           text="Cart"
         />
+
+        <Divider classname="md:hidden" />
+        <Link href="/">
+          <a className="md:hidden" >
+            <Menu className="w-6 h-6" />
+          </a>
+        </Link>
       </div>
     </header>
   );
@@ -43,8 +50,8 @@ const Header: React.FC = () => {
 
 export default Header;
 
-const Divider: React.FC = () => {
-  return <div className="w-[1px] h-6 bg-black mx-8" />;
+const Divider: React.FC<{ classname?: string }> = ({ classname = "" }) => {
+  return <div className={`w-[1px] h-6 bg-black mx-2 lg:mx-8 ${classname}`} />;
 };
 
 const Logo: React.FC = () => {
@@ -58,7 +65,7 @@ const Logo: React.FC = () => {
 
 const NavItems: React.FC = () => {
   return (
-    <div className="nav-items">
+    <div className="nav-items hidden md:block">
       <Link passHref href="/">
         <a className="">Home</a>
       </Link>
@@ -84,7 +91,7 @@ const IconLink: React.FC<{ icon: any; text: string; link: string }> = ({
     <Link passHref href={link}>
       <a className="flex space-x-2">
         {icon}
-        <p>{text}</p>
+        <p className="hidden md:inline-block md:text-sm lg:text-base">{text}</p>
       </a>
     </Link>
   );
