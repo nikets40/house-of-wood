@@ -3,7 +3,11 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#fa8c16"
+      }
+    },
   },
   variants: {
     translate: ({ after }) => after(["group-hover"]),

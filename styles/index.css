@@ -14,9 +14,12 @@
   .primary-btn {
     @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white;
   }
+  .primary-btn-dark {
+    @apply bg-black hover:bg-white transform duration-300 ease-in-out px-10 py-3 rounded-xl text-white hover:text-black;
+  }
 
   .footer > div {
-    @apply  col-span-6 sm:col-span-3 md:col-span-2 xl:col-span-1 first:col-span-6 md:first:col-span-4 xl:first:col-span-2 mt-10 first:-mt-5;
+    @apply col-span-6 sm:col-span-3 md:col-span-2 xl:col-span-1 first:col-span-6 md:first:col-span-4 xl:first:col-span-2 mt-10 first:-mt-5;
   }
 
   .footer h5 {
