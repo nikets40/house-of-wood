@@ -22,17 +22,17 @@ export default ProductsGrid;
 
 export const ProductCard: React.FC<{imagePath?: string}> = ({imagePath="/static/images/product-sample.jpg"}) => {
   return (
-    <div className="group overflow-visible group">
+    <div className="group">
       {/* Image */}
-      <div className="relative h-[400px] overflow-visible">
+      <div className="relative aspect-w-1 aspect-h-1">
         <Image
           src={imagePath}
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
         />
-        <div className="absolute bottom-8 right-8 bg-white rounded-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 cursor-pointer">
-          <Eye className="w-6 h-6 m-3" />
+        <div className="absolute w-14 h-12 left-[80%] top-[80%] flex items-center justify-center bg-white rounded-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 cursor-pointer">
+          <Eye className="w-6 h-6" />
         </div>
       </div>
       {/* ratings */}

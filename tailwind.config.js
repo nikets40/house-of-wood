@@ -5,12 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#fa8c16"
-      }
+        primary: "#fa8c16",
+      },
     },
   },
   variants: {
     translate: ({ after }) => after(["group-hover"]),
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
