@@ -7,7 +7,7 @@ const About: NextPage = () => {
     <div>
       <PageBanner page="about" />
 
-      <div className="flex flex-col items-center text-center justify-center">
+      <div className="flex flex-col items-center text-center justify-center mt-16">
         <Image src="/favicon.png" width="60" height="60" objectFit="contain" />
         <p className="text-lg">GETTING BETTER AND BETTER – TOGETHER</p>
         <h3 className="mt-5 font-bold text-4xl">THE FUTURE OF FURNITURE</h3>
