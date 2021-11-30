@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import MailinglistBanner from "../components/MailinglistBanner";
 import Marketing from "../components/Marketing";
 import NewArrivals from "../components/NewArrivals";
+import Testimonials from "../components/Testimonials";
 import Trending from "../components/Trending";
 
 const IndexPage: NextPage = () => {
@@ -14,6 +15,7 @@ const IndexPage: NextPage = () => {
       <NewArrivals />
       <Trending />
       <Marketing />
+      <Testimonials />
       <MailinglistBanner />
     </div>
   );

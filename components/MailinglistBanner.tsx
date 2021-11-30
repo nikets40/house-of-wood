@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const MailinglistBanner = () => {
   return (
-    <div className="h-[40vh] w-full relative mt-20">
+    <div className="h-[40vh] lg:h-[50vh] w-full relative mt-20">
       <Image
         src="/static/images/mailinglist-bg.jpg"
         layout="fill"
