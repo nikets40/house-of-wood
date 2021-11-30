@@ -16,7 +16,6 @@ const IndexPage: NextPage = () => {
       <Trending />
       <Marketing />
       <Testimonials />
-      <MailinglistBanner />
     </div>
   );
 };

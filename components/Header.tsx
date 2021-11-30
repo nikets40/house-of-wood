@@ -39,7 +39,7 @@ const Header: React.FC = () => {
 
         <Divider classname="md:hidden" />
         <Link href="/">
-          <a className="md:hidden" >
+          <a className="md:hidden">
             <Menu className="w-6 h-6" />
           </a>
         </Link>
@@ -56,10 +56,12 @@ const Divider: React.FC<{ classname?: string }> = ({ classname = "" }) => {
 
 const Logo: React.FC = () => {
   return (
-    <div className="flex items-center space-x-4">
-      <Image src="/favicon.png" width="50" height="50" />
-      <p className="">House of Wood</p>
-    </div>
+    <Link href="/" passHref>
+      <div className="flex items-center space-x-4 cursor-pointer">
+        <Image src="/favicon.png" width="50" height="50" />
+        <p className="">House of Wood</p>
+      </div>
+    </Link>
   );
 };
 
@@ -69,13 +71,13 @@ const NavItems: React.FC = () => {
       <Link passHref href="/">
         <a className="">Home</a>
       </Link>
-      <Link passHref href="/">
+      <Link passHref href="/shop">
         <a>Shop</a>
       </Link>
-      <Link passHref href="/">
+      <Link passHref href="/about">
         <a>About</a>
       </Link>
-      <Link passHref href="/">
+      <Link passHref href="/contact">
         <a>Contact</a>
       </Link>
     </div>
