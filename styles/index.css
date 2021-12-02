@@ -12,7 +12,7 @@
   }
 
   .primary-btn {
-    @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white;
+    @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white active:scale-90 transition-all;
   }
   .primary-btn-dark {
     @apply bg-black hover:bg-white transform duration-300 ease-in-out px-10 py-3 rounded-xl text-white hover:text-black;
@@ -28,12 +28,35 @@
   .footer p {
     @apply text-base cursor-pointer;
   }
+
+
+  form {
+    @apply m-auto px-10 py-8 rounded-lg flex flex-col max-w-md md:max-w-lg shadow-xl;
+  }
+  form label {
+    @apply mb-6 text-gray-700;
+  }
+
+  form label input,
+  form label textarea {
+    @apply block w-full outline-none bg-gray-100 px-4 py-3 rounded-lg mt-2;
+  }
+
+  form label select {
+    @apply bg-gray-100 px-4 py-3 rounded-lg mt-2;
+  }
+
+  .borderShadow {
+    @apply border-2 border-gray-200 rounded-lg;
+  }
 }
 
 body {
   font-family: "Jost", sans-serif;
 }
 
+
 .kumb-sans-font {
   font-family: "Kumbh Sans", sans-serif;
 }
+

@@ -6,18 +6,22 @@ import "../styles/index.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MailinglistBanner from "../components/MailinglistBanner";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const path = router.pathname;
+  console.log(path);
   return (
     <div>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>House of Wood</title>
       </Head>
-      <Header />
+      {path != "/login" && <Header />}
       <div className="m-auto px-10 lg:px-20">
         <Component {...pageProps} />
-        <MailinglistBanner />
+        {path != "/login" && <MailinglistBanner />}
       </div>
 
       <Footer />

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { ReactElement } from "react";
 import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
 
 const Header: React.FC = () => {
@@ -16,7 +15,7 @@ const Header: React.FC = () => {
 
       {/* Right Side of Navbar */}
       <div className="flex items-center">
-        <IconLink icon={<LogOut className="w-6 h-6" />} link="/" text="Login" />
+        <IconLink icon={<LogOut className="w-6 h-6" />} link="/login" text="Login" />
         <Divider />
         <IconLink icon={<Search className="w-6 h-6" />} link="/" text="Searh" />
         <Divider />
