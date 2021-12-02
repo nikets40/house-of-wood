@@ -12,10 +12,10 @@
   }
 
   .primary-btn {
-    @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white active:scale-90 transition-all;
+    @apply bg-[#fa8c16] hover:bg-black transform duration-300 ease-in-out px-10 py-3 rounded-xl hover:text-white active:scale-90 transition-all disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-primary;
   }
   .primary-btn-dark {
-    @apply bg-black hover:bg-white transform duration-300 ease-in-out px-10 py-3 rounded-xl text-white hover:text-black;
+    @apply bg-black hover:bg-white transform duration-300 ease-in-out px-10 py-3 rounded-xl text-white hover:text-black disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-black;
   }
 
   .footer > div {

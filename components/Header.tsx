@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import React, { useContext } from "react";
 import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
+import { UserContext } from "../lib/context";
+import { logout } from "../lib/hooks";
 
 const Header: React.FC = () => {
   const numberOfItemsInCart = 0;
+
+  const userData = useContext(UserContext);
+
   return (
     <header className="bg-white sticky shadow-lg top-0 w-full flex items-center justify-between h-20 z-50 m-auto px-10 lg:px-20">
       {/* Left Side of Navbar */}
@@ -15,7 +21,19 @@ const Header: React.FC = () => {
 
       {/* Right Side of Navbar */}
       <div className="flex items-center">
-        <IconLink icon={<LogOut className="w-6 h-6" />} link="/login" text="Login" />
+        {/* {userData?.username && <p className="md:text-sm lg:text-base">{userData.username} </p>} */}
+        <IconLink
+          icon={<LogOut className="w-6 h-6" />}
+          link="/login"
+          onClick={
+            userData?.username &&
+            ((e) => {
+              e.preventDefault();
+              logout();
+            })
+          }
+          text={userData?.username ? "Logout" : "Login"}
+        />
         <Divider />
         <IconLink icon={<Search className="w-6 h-6" />} link="/" text="Searh" />
         <Divider />
@@ -83,14 +101,24 @@ const NavItems: React.FC = () => {
   );
 };
 
-const IconLink: React.FC<{ icon: any; text: string; link: string }> = ({
-  icon,
-  text,
-  link,
-}) => {
+const IconLink: React.FC<{
+  icon: any;
+  text: string;
+  link: string;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+}> = ({ icon, text, link, onClick }) => {
   return (
     <Link passHref href={link}>
-      <a className="flex space-x-2">
+      <a
+        onClick={(e) => {
+          if (onClick) {
+            e.preventDefault();
+            onClick(e);
+          }
+          null;
+        }}
+        className="flex space-x-2"
+      >
         {icon}
         <p className="hidden md:inline-block md:text-sm lg:text-base">{text}</p>
       </a>

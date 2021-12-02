@@ -10,6 +10,7 @@ const Hero: React.FC = () => {
           layout="fill"
           objectFit="cover"
           className="rounded-3xl"
+          priority
         />
         <div className="absolute left-0 right-0 top-[24%] flex-col text-center text-white font-bold">
           <p className="text-2xl md:text-3xl font-medium uppercase">spring</p>

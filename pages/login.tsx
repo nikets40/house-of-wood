@@ -2,11 +2,19 @@ import Image from "next/image";
 import Link from "next/dist/client/link";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 import { useState } from "react";
+import { loginWithEmail, validateEmail } from "../lib/hooks";
 
 const Login = () => {
-  const signInWithEmail = () => {};
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const isSignInDisabled = () => {
+    if (!email || !password || isLoading) return true;
+    if (!validateEmail(email)) return true;
+    if (password.length < 6) return true;
+    return false;
+  };
   return (
     <div className="mt-4">
       <Link href="/" passHref>
@@ -25,11 +33,12 @@ const Login = () => {
           }}
           className="flex flex-col"
         >
-          <p className="text-4xl font-bold">Sign-In</p>
+          <p className="text-4xl font-extrabold">Sign-In</p>
           <label className="mt-6">
             Email <span className="text-red-600">*</span>{" "}
             <input
               type="email"
+              name="email"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -40,6 +49,7 @@ const Login = () => {
           <label className="mt-4">
             Password <span className="text-red-600">*</span>{" "}
             <input
+              name="password"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -49,11 +59,25 @@ const Login = () => {
             />
           </label>
           <button
-            className="primary-btn text-white mt-6"
-            onClick={signInWithEmail}
+            disabled={isSignInDisabled()}
+            className="primary-btn text-white mt-6 "
+            onClick={async () => {
+              console.log("sigining in with:- ", email, password);
+
+              setIsLoading(true);
+              await loginWithEmail(email, password);
+              setIsLoading(false);
+            }}
           >
-            Sign in
+            {isLoading ? "Signing in..." : "Sign In"}
           </button>
+
+          <p className="mt-2 text-right">
+            New user?{" "}
+            <Link href="/signup" passHref>
+              <a className="text-primary">Create account.</a>
+            </Link>
+          </p>
 
           <GoogleSignInButton className="mt-6 mb-3" />
         </form>
