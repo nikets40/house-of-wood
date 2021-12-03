@@ -50,7 +50,7 @@ const Header: React.FC = () => {
               )}
             </div>
           }
-          link="/"
+          link="/cart"
           text="Cart"
         />
 
