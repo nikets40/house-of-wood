@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Image from "next/dist/client/image";
 import Link from "next/dist/client/link";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const AdminLogin: NextPage = () => {
@@ -15,13 +15,15 @@ const AdminLogin: NextPage = () => {
   return (
     <div className="bg-[#f0f0f1] w-[100vw] h-[100vh]">
       <div className="flex flex-col items-center pt-[15vh]">
-        <Link href="/">
-          <Image
-            src="/favicon.png"
-            width="100px"
-            height="100px"
-            className="cursor-pointer"
-          />
+        <Link href="/" passHref>
+          <a>
+            <Image
+              src="/favicon.png"
+              width="100px"
+              height="100px"
+              className="cursor-pointer"
+            />
+          </a>
         </Link>
 
         <form
@@ -51,12 +53,13 @@ const AdminLogin: NextPage = () => {
             ></div>
             <p className="">Remeber Me</p>
           </div>
-          <button 
-          onClick={() => {
+          <button
+            onClick={() => {
               localStorage.setItem("isAdmin", "true");
-              router.reload()
-          }}
-          className="primary-btn text-white rounded mt-5">
+              router.reload();
+            }}
+            className="primary-btn text-white rounded mt-5"
+          >
             Log in
           </button>
         </form>

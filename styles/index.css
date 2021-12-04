@@ -32,17 +32,31 @@
   form {
     @apply m-auto px-10 py-8 rounded-lg flex flex-col max-w-md md:max-w-lg shadow-xl;
   }
+
   form label {
     @apply mb-6 text-gray-700;
   }
 
-  form label input,
-  form label textarea {
+  form label input, textarea, select {
     @apply block w-full outline-none bg-gray-100 px-4 py-3 rounded-lg mt-2;
   }
 
   form label select {
     @apply bg-gray-100 px-4 py-3 rounded-lg mt-2;
+  }
+
+  .add-product-form {
+    @apply border-0 shadow-none md:border-2 max-w-3xl;
+  }
+
+  .add-product-form input,
+  textarea,
+  select {
+    @apply border border-gray-400 rounded-lg p-2;
+  }
+
+  .add-img-box {
+    @apply w-28 h-28 border bg-gray-100 text-gray-500 rounded flex gap-2 flex-col text-center items-center justify-center last:cursor-pointer;
   }
 
   .borderShadow {
@@ -53,8 +67,12 @@
     @apply text-primary hover:bg-primary rounded-[50%] bg-gray-100 shadow-md p-4 hover:shadow-lg hover:rounded-2xl hover:text-white transition-all transform ease-linear duration-200;
   }
 
+  .sidebar-icon-selected {
+    @apply bg-primary shadow-lg rounded-2xl text-white;
+  }
+
   .sidebar-tooltip {
-    @apply bg-primary rounded min-w-max px-3 py-2 text-white absolute top-[50%] translate-y-[-50%] scale-0 group-hover:scale-100 transition-all transform duration-200 left-5  group-hover:left-20 shadow-lg;
+    @apply bg-primary z-50 rounded min-w-max px-3 py-2 text-white absolute top-[50%] translate-y-[-50%] scale-0 group-hover:scale-100 transition-all transform duration-200 left-5  group-hover:left-20 shadow-lg;
   }
 }
 
