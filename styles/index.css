@@ -29,7 +29,6 @@
     @apply text-base cursor-pointer;
   }
 
-
   form {
     @apply m-auto px-10 py-8 rounded-lg flex flex-col max-w-md md:max-w-lg shadow-xl;
   }
@@ -49,12 +48,19 @@
   .borderShadow {
     @apply border-2 border-gray-200 rounded-lg;
   }
+
+  .sidebar-icon {
+    @apply text-primary hover:bg-primary rounded-[50%] bg-gray-100 shadow-md p-4 hover:shadow-lg hover:rounded-2xl hover:text-white transition-all transform ease-linear duration-200;
+  }
+
+  .sidebar-tooltip {
+    @apply bg-primary rounded min-w-max px-3 py-2 text-white absolute top-[50%] translate-y-[-50%] scale-0 group-hover:scale-100 transition-all transform duration-200 left-5  group-hover:left-20 shadow-lg;
+  }
 }
 
 body {
   font-family: "Jost", sans-serif;
 }
-
 
 .kumb-sans-font {
   font-family: "Kumbh Sans", sans-serif;

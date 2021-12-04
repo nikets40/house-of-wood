@@ -29,7 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const path = router.pathname;
   console.log(path);
 
-  const showHeader = path === "/login" || path === "/signup" ? false : true;
+  const showHeader =
+    path === "/login" || path === "/signup" || path.startsWith("/admin")
+      ? false
+      : true;
+  const isAdminPage = path.startsWith("/admin");
 
   return (
     <UserContext.Provider value={userData}>
@@ -39,13 +43,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="shortcut icon" href="/favicon.png" />
           <title>House of Wood</title>
         </Head>
-        {showHeader && <Header />}
-        <div className="m-auto px-10 lg:px-20">
+        {!isAdminPage && showHeader && <Header />}
+        <div className={`${isAdminPage ? "" : "m-auto px-10 lg:px-20"}`}>
           <Component {...pageProps} />
-          {showHeader && <MailinglistBanner />}
+          {showHeader && !isAdminPage && <MailinglistBanner />}
         </div>
 
-        <Footer />
+        {!isAdminPage && <Footer />}
       </div>
     </UserContext.Provider>
   );
