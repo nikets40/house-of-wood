@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import PageBanner from "../components/PageBanner";
+import PageBanner from "../components/common/PageBanner";
 import Map from "../components/contact/Map";
 import ContactForm from "../components/contact/ContactForm";
 

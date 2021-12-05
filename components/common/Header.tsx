@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
-import { UserContext } from "../lib/context";
-import { logout } from "../lib/hooks";
+import { UserContext } from "../../lib/context";
+import { logout } from "../../lib/hooks";
 
 const Header: React.FC = () => {
   const numberOfItemsInCart = 0;

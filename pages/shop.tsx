@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import { useState } from "react";
-import DropdownButton from "../components/DropdownButton";
-import PageBanner from "../components/PageBanner";
-import ProductsGrid from "../components/ProductsGrid";
-import PriceRangeSlider from "../components/PriceRangeSlider";
+import DropdownButton from "../components/common/DropdownButton";
+import PageBanner from "../components/common/PageBanner";
+import ProductsGrid from "../components/common/ProductsGrid";
+import PriceRangeSlider from "../components/common/PriceRangeSlider";
 
 const Shop: NextPage = () => {
   const categories: FilterItemProps[] = [

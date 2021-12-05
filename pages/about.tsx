@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import PageBanner from "../components/PageBanner";
+import PageBanner from "../components/common/PageBanner";
 import Image from "next/dist/client/image";
 
 const About: NextPage = () => {

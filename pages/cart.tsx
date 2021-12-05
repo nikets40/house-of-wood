@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import PageBanner from "../components/PageBanner";
+import PageBanner from "../components/common/PageBanner";
 import Image from "next/dist/client/image";
 import React, { useState } from "react";
 import { XIcon } from "@heroicons/react/solid";

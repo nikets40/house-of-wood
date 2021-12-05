@@ -1,4 +1,4 @@
-import ProductsGrid from "./ProductsGrid";
+import ProductsGrid from "../common/ProductsGrid";
 import Image from "next/image";
 
 const NewArrivals: React.FC = () => {

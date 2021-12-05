@@ -1,12 +1,12 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/admin/Sidebar";
 import AdminLogin from "./login";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import ManageProducts from "../../components/ManageProducts";
-import AddProduct from "../../components/AddProduct";
-import AdminSettings from "../../components/AdminSettings";
+import ManageProducts from "../../components/admin/ManageProducts";
+import AddProduct from "../../components/admin/AddProduct";
+import AdminSettings from "../../components/admin/AdminSettings";
 
 const Admin: NextPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);

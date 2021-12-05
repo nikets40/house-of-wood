@@ -44,7 +44,7 @@ const AddProduct = () => {
 
         <label>
           Product Description
-          <textarea />
+          <textarea placeholder="Enter product description" rows={5} />
         </label>
         <label
           onClick={(e) => {
@@ -69,7 +69,7 @@ const AddProduct = () => {
               e.target.value = "";
             }}
           />
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             <ImageList
               onRemove={(index: number) => {
                 const images = productImages.filter((_, i) => i !== index);
@@ -94,7 +94,6 @@ const AddProduct = () => {
           Product Discount (%)
           <input type="number" />
         </label>
-        
 
         <button className="primary-btn text-white">Add Product</button>
       </form>

@@ -3,9 +3,9 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 
 import "../styles/index.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import MailinglistBanner from "../components/MailinglistBanner";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import MailinglistBanner from "../components/common/MailinglistBanner";
 import { UserContext } from "../lib/context";
 import { useUserData } from "../lib/hooks";
 import ProgressBar from "@badrap/bar-of-progress";

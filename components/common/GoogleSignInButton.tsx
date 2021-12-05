@@ -1,5 +1,5 @@
 import Image from "next/dist/client/image";
-import {loginWithGoogle} from "../lib/hooks";
+import {loginWithGoogle} from "../../lib/hooks";
 
 const GoogleSignInButton: React.FC<{ className?: string }> = ({
   className = "",

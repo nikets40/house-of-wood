@@ -1,4 +1,4 @@
-import ProductsGrid from "./ProductsGrid";
+import ProductsGrid from "../common/ProductsGrid";
 
 const Trending: React.FC = () => {
   return (

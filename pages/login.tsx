@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/dist/client/link";
-import GoogleSignInButton from "../components/GoogleSignInButton";
+import GoogleSignInButton from "../components/common/GoogleSignInButton";
 import { useState } from "react";
 import { loginWithEmail, validateEmail } from "../lib/hooks";
 

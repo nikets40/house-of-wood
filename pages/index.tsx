@@ -1,12 +1,12 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import MailinglistBanner from "../components/MailinglistBanner";
-import Marketing from "../components/Marketing";
-import NewArrivals from "../components/NewArrivals";
-import Testimonials from "../components/Testimonials";
-import Trending from "../components/Trending";
+import Footer from "../components/common/Footer";
+import Hero from "../components/home/Hero";
+import MailinglistBanner from "../components/common/MailinglistBanner";
+import Marketing from "../components/home/Marketing";
+import NewArrivals from "../components/home/NewArrivals";
+import Testimonials from "../components/common/Testimonials";
+import Trending from "../components/home/Trending";
 
 const IndexPage: NextPage = () => {
   return (
