@@ -18,17 +18,19 @@ const Admin: NextPage = () => {
   return !isAdmin ? (
     <AdminLogin />
   ) : (
-    <div className="flex">
-      <Sidebar
-        onTabChange={(e) => {
-          if (e) setCurrentTabComponent(e);
-          else setCurrentTabComponent(<Dashboard />);
-        }}
-      />
-      <main className="w-full h-screen overflow-y-scroll">
-        {currentTabComponent}
-      </main>
-    </div>
+    router.isReady && (
+      <div className="flex">
+        <Sidebar
+          onTabChange={(e) => {
+            if (e) setCurrentTabComponent(e);
+            else setCurrentTabComponent(<Dashboard />);
+          }}
+        />
+        <main className="w-full h-screen overflow-y-scroll">
+          {currentTabComponent}
+        </main>
+      </div>
+    )
   );
 };
 

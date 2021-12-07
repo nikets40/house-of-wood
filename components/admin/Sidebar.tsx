@@ -1,7 +1,6 @@
 import { ShoppingBag, Plus, Settings, LogOut } from "react-feather";
 import Image from "next/dist/client/image";
-import React from "react";
-import Link from "next/dist/client/link";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import ManageProducts from "./ManageProducts";
 import AddProduct from "./AddProduct";
@@ -29,20 +28,30 @@ const tabsData = [
 ];
 const Sidebar: React.FC<{ onTabChange?: Function }> = ({ onTabChange }) => {
   const router = useRouter();
-  const currentPath = router.query.tab;
+  const currentTab = router.query.tab;
+
+  useEffect(() => {
+    if (router.isReady && currentTab) {
+      const selectedTabIndex = tabsData.findIndex(
+        (tab) => tab.slug === currentTab
+      );
+      onTabChange(tabsData[selectedTabIndex].Component);
+    }
+  }, [router.isReady]);
 
   return (
     <aside className="w-min shadow-lg px-4 flex flex-col gap-4 text-base h-screen pt-4">
-      <Link href="/admin" passHref>
-        <Image
-          src="/favicon.png"
-          width="45px"
-          height="45px"
-          objectFit="contain"
-          className="cursor-pointer"
-          onClick={() => onTabChange()}
-        />
-      </Link>
+      <Image
+        src="/favicon.png"
+        width="45px"
+        height="45px"
+        objectFit="contain"
+        className="cursor-pointer"
+        onClick={() => {
+          router.push("/admin");
+          onTabChange();
+        }}
+      />
 
       <SidebarDivider />
 
@@ -54,7 +63,7 @@ const Sidebar: React.FC<{ onTabChange?: Function }> = ({ onTabChange }) => {
               title={label}
               slug={slug}
               key={index + slug}
-              isSelected={currentPath === slug}
+              isSelected={currentTab === slug}
               onClick={() => onTabChange(Component)}
             />
             {index == 1 && <SidebarDivider />}

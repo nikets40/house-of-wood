@@ -52,7 +52,7 @@
   .add-product-form input,
   textarea,
   select {
-    @apply border border-gray-400 rounded-lg p-2;
+    @apply border border-gray-400 rounded-lg p-2 disabled:opacity-60;
   }
 
   .add-img-box {
@@ -74,6 +74,14 @@
   .sidebar-tooltip {
     @apply bg-primary z-50 rounded min-w-max px-3 py-2 text-white absolute top-[50%] translate-y-[-50%] scale-0 group-hover:scale-100 transition-all transform duration-200 left-5  group-hover:left-20 shadow-lg;
   }
+
+  .suggestion {
+    @apply px-2
+  }
+  .suggestion-active{
+    @apply bg-primary text-white rounded;
+  }
+
 }
 
 body {

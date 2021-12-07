@@ -1,9 +1,8 @@
 import { NextPage } from "next";
 import Link from "next/dist/client/link";
 import Image from "next/dist/client/image";
-import { createUserWithEmail } from "../lib/hooks";
+import { createUserWithEmail, validateEmail } from "../lib/hooks";
 import { useState } from "react";
-import { validateEmail } from "../lib/hooks";
 
 const SignUp: NextPage = () => {
   const asterisk = <span className="text-red-600">*</span>;
@@ -58,7 +57,7 @@ const SignUp: NextPage = () => {
         <label>
           <div className="flex">
             Email {asterisk}
-            {email.length>8 && !validateEmail(email) && (
+            {email.length > 8 && !validateEmail(email) && (
               <span className="flex-grow text-red-500 text-right text-sm">
                 {" "}
                 ( Please Enter a valid email! )

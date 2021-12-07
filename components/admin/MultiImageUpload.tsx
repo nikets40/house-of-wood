@@ -46,7 +46,7 @@ const ImageList: React.FC<{ images: File[]; onRemove: Function }> = ({
   return (
     <React.Fragment>
       {images.map((image, index) => (
-        <div className="relative add-img-box">
+        <div key={image.name+index}  className="relative add-img-box">
           <Image
             src={URL.createObjectURL(image)}
             layout="fill"

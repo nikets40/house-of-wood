@@ -1,11 +1,11 @@
-import React, { MouseEventHandler, useRef, useState } from "react";
-import { Upload, Trash, Trash2 } from "react-feather";
-import Image from "next/dist/client/image";
+import React, { useEffect, useRef, useState } from "react";
 import MultiImageUpload from "./MultiImageUpload";
 import AutoCompleteField from "../common/AutoCompleteField";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
+  console.log("re-rendered");
+
   const [productImages, setProductImages] = useState<File[]>([]);
   const inputFile = useRef(null);
   const brandOptions = [
@@ -19,19 +19,34 @@ const AddProduct = () => {
     "Kelloggs",
   ];
   const categoryOptions = ["Baby", "Food", "Clothes", "Toys"];
-  const [brand, setBrand] = useState("");
 
-  const { register, watch, handleSubmit } = useForm();
+  const {
+    register,
+    watch,
+    handleSubmit,
+    setValue,
+    getValues,
+  } = useForm();
 
-  const onFormSubmit = (data: any) => {};
+  const onFormSubmit = (data: any) => {
+    console.log("form submmited with data: ", data);
+  };
 
-  // TODO: add form hook
+  useEffect(() => {
+    var discount = parseInt(getValues()?.discount);
+    var price = parseInt(getValues()?.price);
+    isNaN(price) ? setValue("price", 0) : setValue("price", price);
+    isNaN(discount) ? setValue("discount", 0) : setValue("discount", discount);
+    const finalPrice = price - (price * discount) / 100;
+    setValue("finalPrice", "$" + finalPrice.toFixed(2));
+  }, [watch("discount"), watch("price")]);
+
   return (
     <div>
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit(onFormSubmit);
+        onSubmit={handleSubmit(onFormSubmit)}
+        onKeyDown={(e) => {
+          e.code === "Enter" && e.preventDefault();
         }}
         className="add-product-form"
       >
@@ -47,30 +62,25 @@ const AddProduct = () => {
 
         <AutoCompleteField
           label="Product Brand"
-          placeholder="Select Brand"
-          options={brandOptions}
-          value={brand}
-          onChange={(value) => {
-            setBrand(value);
-          }}
+          placeholder="Enter Brand"
+          suggestions={brandOptions}
+          onValueChange={(value) => setValue("brand", value)}
         />
 
-      
-
-        <label>
-          Product Category
-          <select>
-            <option>Select a brand</option>
-            <option>Category 1</option>
-            <option>Category 2</option>
-            <option>Category 3</option>
-            <option>Category 4</option>
-          </select>
-        </label>
+        <AutoCompleteField
+          label="Product Category"
+          placeholder="Enter product Category"
+          suggestions={categoryOptions}
+          onValueChange={(value) => setValue("category", value)}
+        />
 
         <label>
           Product Description
-          <textarea placeholder="Enter product description" rows={5} />
+          <textarea
+            placeholder="Enter product description"
+            {...register("description")}
+            rows={5}
+          />
         </label>
         <label
           onClick={(e) => {
@@ -92,6 +102,7 @@ const AddProduct = () => {
                 Array.from(productImages)
               );
               setProductImages(newImages);
+              setValue("images", newImages);
               e.target.value = "";
             }}
           />
@@ -99,6 +110,7 @@ const AddProduct = () => {
             onRemove={(index: number) => {
               const images = productImages.filter((_, i) => i !== index);
               setProductImages(images);
+              setValue("images", images);
             }}
             inputFile={inputFile}
             productImages={productImages}
@@ -107,15 +119,30 @@ const AddProduct = () => {
 
         <label>
           Product Price ($)
-          <input type="number" />
+          <input type="number" {...register("price")} />
         </label>
 
         <label>
           Product Discount (%)
-          <input type="number" />
+          <input type="number" {...register("discount")} />
         </label>
 
-        <button className="primary-btn text-white">Add Product</button>
+        <label>
+          Final Price ($)
+          <input type="text" disabled {...register("finalPrice")} />
+        </label>
+
+        <label className="flex flex-row items-center">
+          <div className="w-6 h-6 border rounded" /> <p> Publish Item</p>
+        </label>
+
+        <button
+          type="submit"
+          onClick={() => handleSubmit(onFormSubmit)}
+          className="primary-btn text-white"
+        >
+          Add Product
+        </button>
       </form>
     </div>
   );
