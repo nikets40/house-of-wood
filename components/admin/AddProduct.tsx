@@ -1,35 +1,61 @@
 import React, { MouseEventHandler, useRef, useState } from "react";
 import { Upload, Trash, Trash2 } from "react-feather";
 import Image from "next/dist/client/image";
+import MultiImageUpload from "./MultiImageUpload";
+import AutoCompleteField from "../common/AutoCompleteField";
+import { FieldValues, useForm } from "react-hook-form";
 
 const AddProduct = () => {
   const [productImages, setProductImages] = useState<File[]>([]);
   const inputFile = useRef(null);
+  const brandOptions = [
+    "Ikea",
+    "Fisher Price",
+    "P&G",
+    "Pampers",
+    "Huggies",
+    "Nestle",
+    "Meggi",
+    "Kelloggs",
+  ];
+  const categoryOptions = ["Baby", "Food", "Clothes", "Toys"];
+  const [brand, setBrand] = useState("");
 
+  const { register, watch, handleSubmit } = useForm();
+
+  const onFormSubmit = (data: any) => {};
+
+  // TODO: add form hook
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          handleSubmit(onFormSubmit);
         }}
         className="add-product-form"
       >
         <h3 className="text-2xl font-semibold">Add Product</h3>
         <label>
           Product Name
-          <input type="text" />
+          <input
+            type="text"
+            {...register("name")}
+            placeholder="Enter product Name"
+          />
         </label>
 
-        <label>
-          Product Brand
-          <select>
-            <option>Select a brand</option>
-            <option>Brand 1</option>
-            <option>Brand 2</option>
-            <option>Brand 3</option>
-            <option>Brand 4</option>
-          </select>
-        </label>
+        <AutoCompleteField
+          label="Product Brand"
+          placeholder="Select Brand"
+          options={brandOptions}
+          value={brand}
+          onChange={(value) => {
+            setBrand(value);
+          }}
+        />
+
+      
 
         <label>
           Product Category
@@ -69,20 +95,14 @@ const AddProduct = () => {
               e.target.value = "";
             }}
           />
-          <div className="mt-2 flex flex-wrap gap-2">
-            <ImageList
-              onRemove={(index: number) => {
-                const images = productImages.filter((_, i) => i !== index);
-                setProductImages(images);
-              }}
-              images={productImages}
-            />
-            <UploadImageButton
-              onClick={() => {
-                inputFile.current.click();
-              }}
-            />
-          </div>
+          <MultiImageUpload
+            onRemove={(index: number) => {
+              const images = productImages.filter((_, i) => i !== index);
+              setProductImages(images);
+            }}
+            inputFile={inputFile}
+            productImages={productImages}
+          />
         </label>
 
         <label>
@@ -102,42 +122,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
-const UploadImageButton: React.FC<{ onClick: MouseEventHandler }> = ({
-  onClick,
-}) => {
-  return (
-    <div onClick={onClick} className="add-img-box">
-      <Upload />
-      Upload
-    </div>
-  );
-};
-
-const ImageList: React.FC<{ images: File[]; onRemove: Function }> = ({
-  images,
-  onRemove,
-}) => {
-  return (
-    <React.Fragment>
-      {images.map((image, index) => (
-        <div className="relative add-img-box">
-          <Image
-            src={URL.createObjectURL(image)}
-            layout="fill"
-            objectFit="cover"
-            className="rounded"
-          />
-          <div
-            onClick={() => {
-              onRemove(index);
-            }}
-            className="absolute right-1 top-1 bg-white rounded-full p-1.5 text-red-500 shadow-lg cursor-pointer "
-          >
-            <Trash2 className="w-5 h-5" />
-          </div>
-        </div>
-      ))}
-    </React.Fragment>
-  );
-};

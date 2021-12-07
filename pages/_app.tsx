@@ -27,8 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const userData = useUserData();
   const router = useRouter();
   const path = router.pathname;
-  console.log(path);
-
   const showHeader =
     path === "/login" || path === "/signup" || path.startsWith("/admin")
       ? false
