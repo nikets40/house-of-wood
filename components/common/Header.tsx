@@ -75,7 +75,7 @@ const Logo: React.FC = () => {
   return (
     <Link href="/" passHref>
       <div className="flex items-center space-x-4 cursor-pointer">
-        <Image src="/favicon.png" width="50" height="50" />
+        <Image src="/favicon.png" width="50" height="50" alt="" />
         <p className="">House of Wood</p>
       </div>
     </Link>

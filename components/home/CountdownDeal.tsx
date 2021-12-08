@@ -9,6 +9,7 @@ const CountdownDeal: React.FC<{className?: string}> = ({className=""}) => {
         objectFit="cover"
         objectPosition="right"
         className="rounded-2xl"
+        alt="marketing"
       />
       <div>
         <div className="absolute top-0 right-0 left-0 bottom-0 bg-black opacity-10 rounded-2xl" />

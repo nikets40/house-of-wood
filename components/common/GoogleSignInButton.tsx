@@ -14,6 +14,7 @@ const GoogleSignInButton: React.FC<{ className?: string }> = ({
         width={30}
         height={30}
         className=""
+        alt="google"
       />
       <p className=" absolute left-0 right-0 ml-10 text-center">
         Sign In with Google

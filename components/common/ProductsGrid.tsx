@@ -30,6 +30,7 @@ export const ProductCard: React.FC<{imagePath?: string}> = ({imagePath="/static/
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
+          alt="Product"
         />
         <div className="absolute w-14 h-12 left-[80%] top-[80%] flex items-center justify-center bg-white rounded-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 cursor-pointer">
           <Eye className="w-6 h-6" />

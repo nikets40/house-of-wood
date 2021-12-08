@@ -8,6 +8,7 @@ const MailinglistBanner = () => {
         layout="fill"
         objectFit="cover"
         className="rounded-2xl"
+        alt=""
       />
       <div className="absolute text-white flex flex-col items-center text-center left-0 right-0 mx-auto w-11/12 top-[50%] translate-y-[-55%] lg:text-left lg:items-start md:w-[60%] xl:w-[40%] lg:mr-5 ">
         {emailIcon}{" "}

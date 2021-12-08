@@ -42,6 +42,7 @@ const NewArrivalsBanner: React.FC<{ imagePath: string; title: string }> = ({
         objectFit="cover"
         objectPosition="center"
         className="rounded-2xl "
+        alt={title}
       />
 
       <div className="absolute bg-black opacity-20 rounded-2xl top-0 bottom-0 left-0 right-0" />

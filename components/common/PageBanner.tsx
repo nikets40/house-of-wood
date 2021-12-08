@@ -9,6 +9,7 @@ const PageBanner: React.FC<{ page: string }> = ({ page }) => {
         objectFit="cover"
         className=""
         priority
+        alt="Page Banner"
       />
       <div className="absolute text-center left-0 right-0 top-[50%] translate-y-[-50%] text-white">
         <h3 className="text-5xl font-bold">{page}</h3>

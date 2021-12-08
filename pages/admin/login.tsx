@@ -22,6 +22,7 @@ const AdminLogin: NextPage = () => {
               width="100px"
               height="100px"
               className="cursor-pointer"
+              alt=""
             />
           </a>
         </Link>

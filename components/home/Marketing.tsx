@@ -35,6 +35,7 @@ const NewArrivalDeal: React.FC = () => {
         objectFit="cover"
         objectPosition="bottom"
         className="bg-primary rounded-2xl"
+        alt=""
       />
       <div className="absolute text-center left-12 right-12 md:left-0 md:right-0 lg:left-12 lg:right-12 py-6 top-[50%] translate-y-[-50%] border-[3px] border-white rounded-3xl md:border-0 lg:border-[3px]">
         <p className="text-white text-base font-normal">New Arrivals</p>
@@ -61,6 +62,7 @@ const MarketingCard: React.FC<{
         layout="fill"
         objectFit="cover"
         className="rounded-2xl"
+        alt=""
       />
 
       <div className="absolute text-center left-0 right-0 w-[70%] md:w-[85%] lg-w-[70%] mx-auto py-6 top-[50%] translate-y-[-55%]">

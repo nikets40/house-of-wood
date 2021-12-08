@@ -52,6 +52,7 @@ const ImageList: React.FC<{ images: File[]; onRemove: Function }> = ({
             layout="fill"
             objectFit="cover"
             className="rounded"
+            alt=""
           />
           <div
             onClick={() => {

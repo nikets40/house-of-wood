@@ -49,6 +49,7 @@ const AddProduct = () => {
     isNaN(discount) ? setValue("discount", 0) : setValue("discount", discount);
     const finalPrice = price - (price * discount) / 100;
     setValue("finalPrice", "$" + finalPrice.toFixed(2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch("discount"), watch("price")]);
 
   return (
@@ -162,7 +163,7 @@ const AddProduct = () => {
           className="primary-btn text-white"
           disabled={isUploading}
         >
-         {!isUploading ? "Add Product": "Adding product..."} 
+          {!isUploading ? "Add Product" : "Adding product..."}
         </button>
       </form>
     </div>

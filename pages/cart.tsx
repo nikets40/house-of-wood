@@ -90,6 +90,7 @@ const CartItem: React.FC = () => {
           src="/static/images/product-sample.jpg"
           layout="fill"
           objectFit="cover"
+          alt=""
         />
       </div>
       <div>

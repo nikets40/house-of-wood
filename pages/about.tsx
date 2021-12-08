@@ -8,7 +8,13 @@ const About: NextPage = () => {
       <PageBanner page="about" />
 
       <div className="flex flex-col items-center text-center justify-center mt-16">
-        <Image src="/favicon.png" width="60" height="60" objectFit="contain" />
+        <Image
+          src="/favicon.png"
+          width="60"
+          height="60"
+          objectFit="contain"
+          alt=""
+        />
         <p className="text-lg">GETTING BETTER AND BETTER – TOGETHER</p>
         <h3 className="mt-5 font-bold text-4xl">THE FUTURE OF FURNITURE</h3>
 
@@ -18,6 +24,7 @@ const About: NextPage = () => {
             layout="fill"
             objectFit="cover"
             className="rounded-2xl"
+            alt=""
           />
         </div>
 
@@ -41,7 +48,6 @@ const About: NextPage = () => {
         </div>
 
         <div className="mt-24" />
-
       </div>
 
       <AboutUsSection />
@@ -54,17 +60,15 @@ export default About;
 const AboutUsSection: React.FC = () => {
   return (
     <div className="flex gap-10 flex-col md:flex-row justify-between">
-
-
       <div className="relative w-full md:w-[50%] h-[40vh]">
         <Image
           src="/static/images/about-us.jpeg"
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
+          alt=""
         />
       </div>
-
 
       <div className="text-left md:w-[45%]">
         <p className="text-primary text-xl">About Phlox Group</p>

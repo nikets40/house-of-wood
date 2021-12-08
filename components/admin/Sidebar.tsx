@@ -42,12 +42,14 @@ const Sidebar: React.FC<{ onTabChange?: Function }> = ({ onTabChange }) => {
         onTabChange(<ErrorPage shouldGoBack={true} />);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.pathname]);
 
   return (
     <aside className="w-min shadow-lg px-4 flex flex-col gap-4 text-base h-screen pt-4">
       <Image
         src="/favicon.png"
+        alt="logo"
         width="45px"
         height="45px"
         objectFit="contain"

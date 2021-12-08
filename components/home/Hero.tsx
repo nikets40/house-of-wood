@@ -11,6 +11,7 @@ const Hero: React.FC = () => {
           objectFit="cover"
           className="rounded-3xl"
           priority
+          alt="Hero Banner"
         />
         <div className="absolute left-0 right-0 top-[24%] flex-col text-center text-white font-bold">
           <p className="text-2xl md:text-3xl font-medium uppercase">spring</p>
@@ -31,6 +32,7 @@ const Hero: React.FC = () => {
           layout="fill"
           objectFit="cover"
           className="rounded-3xl"
+          alt="Hero Banner2"
         />
 
         <div className="absolute left-0 right-10 top-[14%] flex-col text-right text-black font-bold">
@@ -56,6 +58,7 @@ const Hero: React.FC = () => {
           layout="fill"
           objectFit="cover"
           className="rounded-3xl md:object-left"
+          alt="Hero Banner3"
         />
 
         <div className="absolute left-0 right-10 top-[14%] flex-col text-right text-black font-bold">

@@ -30,7 +30,7 @@ const SignUp: NextPage = () => {
       <Link href="/" passHref>
         <a>
           <div className="flex flex-col items-center">
-            <Image src="/favicon.png" width={90} height={90} className="" />
+            <Image src="/favicon.png" width={90} height={90} className="" alt="" />
             <h4 className="text-xl font-bold uppercase">House of Wood</h4>
           </div>
         </a>

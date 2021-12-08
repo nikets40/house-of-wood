@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <div className="bg-gray-100 m-auto px-10 lg:px-20 footer pt-10 pb-5 mt-14">
       <div className="grid grid-cols-6 gap-4 m-auto footer pt-10">
         <div className="col-span-6">
-          <Image src="/favicon.png" width="70" height="70" />
+          <Image src="/favicon.png" width="70" height="70" alt=""/>
           <h5 className="-mt-2">House of Wood</h5>
           <p className="font-normal text-base opacity-95 mt-3">
             While the lovely valley teems with vapour around me, and the

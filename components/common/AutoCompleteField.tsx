@@ -19,6 +19,7 @@ const AutoCompleteField: React.FC<AutoCompleteFieldProps> = ({
 
   useEffect(() => {
     onValueChange(input);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
