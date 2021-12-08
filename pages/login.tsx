@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/dist/client/link";
 import GoogleSignInButton from "../components/common/GoogleSignInButton";
 import { useState } from "react";
-import { loginWithEmail, validateEmail } from "../lib/hooks";
+import { loginWithEmail, validateEmail } from "../lib/auth-hooks";
 
 const Login = () => {
   const [email, setEmail] = useState("");

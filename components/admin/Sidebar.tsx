@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import ManageProducts from "./ManageProducts";
 import AddProduct from "./AddProduct";
 import AdminSettings from "./AdminSettings";
+import ErrorPage from "../../pages/404";
 
 const tabsData = [
   {
@@ -35,9 +36,13 @@ const Sidebar: React.FC<{ onTabChange?: Function }> = ({ onTabChange }) => {
       const selectedTabIndex = tabsData.findIndex(
         (tab) => tab.slug === currentTab
       );
-      onTabChange(tabsData[selectedTabIndex].Component);
+      if (selectedTabIndex > -1) {
+        onTabChange(tabsData[selectedTabIndex].Component);
+      } else {
+        onTabChange(<ErrorPage shouldGoBack={true} />);
+      }
     }
-  }, [router.isReady]);
+  }, [router.isReady, router.pathname]);
 
   return (
     <aside className="w-min shadow-lg px-4 flex flex-col gap-4 text-base h-screen pt-4">

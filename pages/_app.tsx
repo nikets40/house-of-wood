@@ -7,7 +7,7 @@ import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import MailinglistBanner from "../components/common/MailinglistBanner";
 import { UserContext } from "../lib/context";
-import { useUserData } from "../lib/hooks";
+import { useUserData } from "../lib/auth-hooks";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router, { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";

@@ -2,9 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import MultiImageUpload from "./MultiImageUpload";
 import AutoCompleteField from "../common/AutoCompleteField";
 import { useForm } from "react-hook-form";
+import { AddNewProduct, UploadFiles } from "../../lib/db-hooks";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const AddProduct = () => {
   console.log("re-rendered");
+  const router = useRouter();
+
+  const [isUploading, setIsUploading] = useState(false);
 
   const [productImages, setProductImages] = useState<File[]>([]);
   const inputFile = useRef(null);
@@ -20,16 +26,20 @@ const AddProduct = () => {
   ];
   const categoryOptions = ["Baby", "Food", "Clothes", "Toys"];
 
-  const {
-    register,
-    watch,
-    handleSubmit,
-    setValue,
-    getValues,
-  } = useForm();
+  const { register, watch, handleSubmit, setValue, getValues } = useForm();
 
-  const onFormSubmit = (data: any) => {
+  const onFormSubmit = async (data: any) => {
+    setIsUploading(true);
     console.log("form submmited with data: ", data);
+    const result = await AddNewProduct(data);
+    setIsUploading(false);
+    console.log("result: ", result);
+    if (result.success) {
+      toast.success(result.message);
+      router.push({ query: { tab: "manage-products" } });
+    } else {
+      toast.error(result.message);
+    }
   };
 
   useEffect(() => {
@@ -132,16 +142,27 @@ const AddProduct = () => {
           <input type="text" disabled {...register("finalPrice")} />
         </label>
 
-        <label className="flex flex-row items-center">
-          <div className="w-6 h-6 border rounded" /> <p> Publish Item</p>
+        <label className="flex flex-row items-center cursor-pointer">
+          <input
+            type="checkbox"
+            className="hidden"
+            {...register("published")}
+          />
+          <div
+            className={`w-5 h-5 mr-2 border rounded ${
+              watch("published") && "bg-primary border-0"
+            }`}
+          />
+          <p> Publish Item</p>
         </label>
 
         <button
           type="submit"
           onClick={() => handleSubmit(onFormSubmit)}
           className="primary-btn text-white"
+          disabled={isUploading}
         >
-          Add Product
+         {!isUploading ? "Add Product": "Adding product..."} 
         </button>
       </form>
     </div>

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Link from "next/dist/client/link";
 import Image from "next/dist/client/image";
-import { createUserWithEmail, validateEmail } from "../lib/hooks";
+import { createUserWithEmail, validateEmail } from "../lib/auth-hooks";
 import { useState } from "react";
 
 const SignUp: NextPage = () => {
