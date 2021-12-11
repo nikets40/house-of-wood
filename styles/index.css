@@ -7,6 +7,14 @@
 @tailwind utilities;
 
 @layer components {
+  .manage-products-table {
+    @apply table-auto border-collapse border  min-w-max w-full;
+  }
+
+  .manage-products-table th,td {
+    @apply px-4 lg:px-0;
+  }
+
   .nav-items a {
     @apply mr-4 lg:mr-6 xl:mr-8 font-normal md:text-sm lg:text-base;
   }
@@ -37,7 +45,9 @@
     @apply mb-6 text-gray-700;
   }
 
-  form label input, textarea, select {
+  form label input,
+  textarea,
+  select {
     @apply block w-full outline-none bg-gray-100 px-4 py-3 rounded-lg mt-2;
   }
 
@@ -76,12 +86,11 @@
   }
 
   .suggestion {
-    @apply px-2
+    @apply px-2;
   }
-  .suggestion-active{
+  .suggestion-active {
     @apply bg-primary text-white rounded;
   }
-
 }
 
 body {

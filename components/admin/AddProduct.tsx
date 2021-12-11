@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import MultiImageUpload from "./MultiImageUpload";
 import AutoCompleteField from "../common/AutoCompleteField";
 import { useForm } from "react-hook-form";
@@ -42,16 +42,9 @@ const AddProduct = () => {
     }
   };
 
-  useEffect(() => {
-    var discount = parseInt(getValues()?.discount);
-    var price = parseInt(getValues()?.price);
-    isNaN(price) ? setValue("price", 0) : setValue("price", price);
-    isNaN(discount) ? setValue("discount", 0) : setValue("discount", discount);
-    const finalPrice = price - (price * discount) / 100;
-    setValue("finalPrice", "$" + finalPrice.toFixed(2));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [watch("discount"), watch("price")]);
-
+  const getDiscountedPrice = (price: number, discount: number) => {
+    return price - (price * discount) / 100;
+  };
   return (
     <div>
       <form
@@ -129,19 +122,42 @@ const AddProduct = () => {
         </label>
 
         <label>
+          Product Quantity
+          <input
+            type="number"
+            placeholder="Enter the number of products in stock"
+            {...register("quantity")}
+          />
+        </label>
+
+        <label>
           Product Price ($)
           <input type="number" {...register("price")} />
         </label>
 
         <label>
-          Product Discount (%)
-          <input type="number" {...register("discount")} />
+          Product Discount (%) (optional)
+          <input
+            type="number"
+            placeholder="Enter the discount on product"
+            {...register("discount")}
+          />
         </label>
 
-        <label>
-          Final Price ($)
-          <input type="text" disabled {...register("finalPrice")} />
-        </label>
+        {watch("discount") && watch("price") && (
+          <label>
+            Final Price ($)
+            <input
+              type="text"
+              disabled
+              value={getDiscountedPrice(
+                getValues("price"),
+                getValues("discount")
+              )}
+              {...register("finalPrice")}
+            />
+          </label>
+        )}
 
         <label className="flex flex-row items-center cursor-pointer">
           <input

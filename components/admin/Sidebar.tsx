@@ -2,7 +2,7 @@ import { ShoppingBag, Plus, Settings, LogOut } from "react-feather";
 import Image from "next/dist/client/image";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import ManageProducts from "./ManageProducts";
+import ManageProducts from "./manage products/ManageProducts";
 import AddProduct from "./AddProduct";
 import AdminSettings from "./AdminSettings";
 import ErrorPage from "../../pages/404";
