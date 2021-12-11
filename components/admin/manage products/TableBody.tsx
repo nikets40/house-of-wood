@@ -6,7 +6,7 @@ interface TableBodyProps {
   products: ProductData[];
   filterKeys: string[];
   onProductSelect: (product: ProductData) => void;
-  isProductSelected: (id: number) => boolean;
+  isProductSelected: (id: string) => boolean;
 }
 
 const TableBody: React.FC<TableBodyProps> = (props) => {

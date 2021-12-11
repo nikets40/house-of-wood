@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetAllProducts } from "../../../lib/db-hooks";
+import { GetAllProducts, RemoveProduct } from "../../../lib/db-hooks";
 import { ProductData } from "../../../interfaces/allProducts";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
@@ -28,7 +28,7 @@ const ManageProducts: React.FC = () => {
     }
   };
 
-  const isProductSelected = (id: number) => {
+  const isProductSelected = (id: string) => {
     const product = selectedProducts?.find((product) => product.id === id);
     return product ? true : false;
   };
@@ -64,6 +64,18 @@ const ManageProducts: React.FC = () => {
     return keys.filter((key) => !filterOutKeys.includes(key));
   };
 
+  const handeldleDelete = () => {
+    console.log("Delete button clicked");
+    if(selectedProducts.length > 0){
+      const newProducts = products.filter((product) => !isProductSelected(product.id));
+      setProducts(newProducts);
+      for(let i = 0; i < selectedProducts.length; i++){
+        RemoveProduct(selectedProducts[i].id);
+      }
+      setSelectedProducts([]);
+    }
+  }
+
   return (
     <div className="mx-8 mt-5">
       <div>
@@ -71,7 +83,7 @@ const ManageProducts: React.FC = () => {
         <div>
           {products?.length > 0 && (
             <div>
-              <ControlPanel />
+              <ControlPanel onDelete={handeldleDelete} />
               <table className="manage-products-table">
                 <TableHead
                   headers={getHeaderFieldNames()}

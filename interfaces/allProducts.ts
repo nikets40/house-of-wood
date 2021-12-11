@@ -1,7 +1,7 @@
 
 
 export interface ProductData {
-    id: number;
+    id: string;
     name: string;
     quantity: number;
     price: number;
