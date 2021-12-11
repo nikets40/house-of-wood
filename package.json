@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
+    "@firebase/firestore-types": "^2.5.0",
     "@heroicons/react": "^1.0.5",
     "@hookform/error-message": "^2.0.0",
     "@tailwindcss/aspect-ratio": "^0.3.0",

@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MultiImageUpload from "./MultiImageUpload";
 import AutoCompleteField from "../common/AutoCompleteField";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { AddNewProduct, UploadFiles } from "../../lib/db-hooks";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
@@ -14,23 +14,23 @@ const AddProduct = () => {
 
   const [productImages, setProductImages] = useState<File[]>([]);
   const inputFile = useRef(null);
-  const brandOptions = [
-    "Ikea",
-    "Fisher Price",
-    "P&G",
-    "Pampers",
-    "Huggies",
-    "Nestle",
-    "Meggi",
-    "Kelloggs",
-  ];
-  const categoryOptions = ["Baby", "Food", "Clothes", "Toys"];
+  const brandOptions = [];
+  const categoryOptions = [];
 
   const { register, watch, handleSubmit, setValue, getValues } = useForm();
 
+  useEffect(() => {
+    const finalPrice = getDiscountedPrice(
+      getValues().price,
+      getValues().discount
+    );
+    setValue("finalPrice", finalPrice);
+  }, [watch("price"), watch("discount")]);
+
   const onFormSubmit = async (data: any) => {
-    setIsUploading(true);
     console.log("form submmited with data: ", data);
+
+    setIsUploading(true);
     const result = await AddNewProduct(data);
     setIsUploading(false);
     console.log("result: ", result);
@@ -132,14 +132,18 @@ const AddProduct = () => {
 
         <label>
           Product Price ($)
-          <input type="number" {...register("price")} />
+          <input
+            type="number"
+            placeholder="Enter the price of Product in $"
+            {...register("price")}
+          />
         </label>
 
         <label>
           Product Discount (%) (optional)
           <input
             type="number"
-            placeholder="Enter the discount on product"
+            placeholder="Enter the discount on product in %"
             {...register("discount")}
           />
         </label>
@@ -147,15 +151,7 @@ const AddProduct = () => {
         {watch("discount") && watch("price") && (
           <label>
             Final Price ($)
-            <input
-              type="text"
-              disabled
-              value={getDiscountedPrice(
-                getValues("price"),
-                getValues("discount")
-              )}
-              {...register("finalPrice")}
-            />
+            <input type="number" {...register("finalPrice")} disabled />
           </label>
         )}
 

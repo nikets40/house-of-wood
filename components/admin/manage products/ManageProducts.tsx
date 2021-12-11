@@ -57,7 +57,7 @@ const ManageProducts: React.FC = () => {
     }
   }, []);
 
-  const filterOutKeys = ["id", "description", "rating"];
+  const filterOutKeys = ["id", "description", "rating", "date"];
 
   const getHeaderFieldNames = () => {
     const keys = Object.keys(products[0]);

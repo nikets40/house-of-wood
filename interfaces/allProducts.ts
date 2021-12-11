@@ -1,3 +1,4 @@
+import { Timestamp } from "@firebase/firestore";
 
 
 export interface ProductData {
@@ -10,10 +11,10 @@ export interface ProductData {
     description: string;
     images: string[];
     category: string;
-    rating: number;
+    rating: number; 
     brand: string;
     published: boolean;
-    date: Date;
+    date: Timestamp;
 }
 
 export const jsonToProductData = (json: any): ProductData => {

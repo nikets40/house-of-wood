@@ -38,7 +38,6 @@ const TableBody: React.FC<TableBodyProps> = (props) => {
                   <p className=" hover:text-primary cursor-pointer line-clamp-3 pr-2">
                     {product[key]}
                   </p>
-                  
                 </td>
               );
             } else if (key == "images") {

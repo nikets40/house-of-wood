@@ -13,6 +13,9 @@ export const AddNewProduct = async (productData: any) => {
         const result = await setDoc(doc, {
             ...productData,
             images: productImages.fileUrls,
+            discount: parseInt(productData.discount),
+            price: parseInt(productData.price),
+            finalPrice: parseInt(productData.finalPrice),
             date: Timestamp.now()
         });
         return { success: true, message: "Product Added! Successfully", data: result };
