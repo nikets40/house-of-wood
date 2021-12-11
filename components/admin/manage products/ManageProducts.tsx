@@ -22,8 +22,8 @@ const ManageProducts: React.FC = () => {
       setSelectedProducts(newSelectedProducts);
     } else {
       console.log("Product does not exists ");
-
-      const newSelectedProducts = selectedProducts?.concat(selectedProduct);
+      const newSelectedProducts = (selectedProducts?.concat(selectedProduct))?? [selectedProduct];
+      console.log(newSelectedProducts);
       setSelectedProducts(newSelectedProducts);
     }
   };

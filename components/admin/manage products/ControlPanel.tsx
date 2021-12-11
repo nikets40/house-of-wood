@@ -1,4 +1,5 @@
-const btnClass: string = "border-2 px-4 border-primary bg-white text-primary py-1.5 rounded hover:bg-primary hover:text-white transition-all ease-in-out";
+const btnClass: string =
+  "border-2 px-4 border-primary bg-white text-primary py-1.5 rounded hover:bg-primary hover:text-white transition-all ease-in-out";
 
 const ControlPanel: React.FC = () => {
   return (
@@ -23,8 +24,8 @@ const BulkActions: React.FC = () => {
   return (
     <>
       <select className=" w-[120px] mt-0">
-        {options.map((option) => (
-          <option>{option}</option>
+        {options.map((option, index) => (
+          <option key={option + index}>{option}</option>
         ))}
       </select>
       <button className={btnClass}>Apply</button>
@@ -37,8 +38,8 @@ const SelectCategory: React.FC = () => {
 
   return (
     <select className="w-[200px] mt-0">
-      {categories.map((category) => (
-        <option>{category}</option>
+      {categories.map((category, index) => (
+        <option key={category + index}>{category}</option>
       ))}
     </select>
   );
@@ -48,8 +49,8 @@ const FilterByStock: React.FC = () => {
   const options = ["Filter by Stock Status", "In Stock", "Out of Stock"];
   return (
     <select className="w-[180px] mt-0">
-      {options.map((option) => (
-        <option>{option}</option>
+      {options.map((option, index) => (
+        <option key={option + index}>{option}</option>
       ))}
     </select>
   );
