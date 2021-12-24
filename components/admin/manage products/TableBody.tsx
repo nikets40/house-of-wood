@@ -32,10 +32,20 @@ const TableBody: React.FC<TableBodyProps> = (props) => {
             const unit = getUnit(key);
             if (props.filterKeys.includes(key)) {
               return null;
-            } else if (key == "name") {
+            } 
+            else if (key ==="brand"){
               return (
-                <td className="" key="index">
-                  <p className=" hover:text-primary cursor-pointer line-clamp-3 pr-2">
+                <td className="max-w-[100px]" key={index}>
+                <p className=" line-clamp-2 pr-8">
+                  {product[key]}
+                </p>
+              </td>
+              );
+            }
+            else if (key == "name") {
+              return (
+                <td className="max-w-[200px]" key={index}>
+                  <p className=" hover:text-primary cursor-pointer line-clamp-2 pr-8">
                     {product[key]}
                   </p>
                 </td>
@@ -80,7 +90,8 @@ const TableBody: React.FC<TableBodyProps> = (props) => {
                   </div>
                 </td>
               );
-            } else if (
+            } 
+            else if (
               key == "price" ||
               key == "finalPrice" ||
               key == "discount"

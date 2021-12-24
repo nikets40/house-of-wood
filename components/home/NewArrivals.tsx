@@ -1,7 +1,22 @@
 import ProductsGrid from "../common/ProductsGrid";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { GetAllProducts } from "../../lib/db-hooks";
+import { ProductData } from "../../interfaces/allProducts";
+import Link from "next/link";
 
 const NewArrivals: React.FC = () => {
+  const [products, setProducts] = useState<ProductData[]>();
+
+  const getProducts = async () => {
+    GetAllProducts().then((products) => {
+      setProducts(products.data);
+    });
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <div className="mt-20">
       <div className="text-center">
@@ -12,7 +27,8 @@ const NewArrivals: React.FC = () => {
       </div>
 
       <div className="mt-10" />
-      <ProductsGrid noOfItems={8} />
+
+      {products && <ProductsGrid products={products.slice(0,8)} />}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-20">
         <NewArrivalsBanner
@@ -52,7 +68,9 @@ const NewArrivalsBanner: React.FC<{ imagePath: string; title: string }> = ({
         <p className="capitalize text-white font-light mt-2.5 mb-5">
           Upto 20% off on all furniture
         </p>
+        <Link href={"/shop"} passHref>
         <button className="primary-btn text-white">Shop Now</button>
+        </Link>
       </div>
     </div>
   );

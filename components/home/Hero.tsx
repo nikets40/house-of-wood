@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
   return (
     <main className="w-full grid grid-cols-5 gap-6 jost-font">
       {/* First Banner */}
-      <div className="col-span-5 h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] relative">
+      <div className="col-span-5 h-[60vh] md:h-[70vh] lg:h-[80vh] max-h-[1080px] relative">
         <Image
           src="/static/images/Hero1.jpeg"
           layout="fill"
@@ -15,18 +16,20 @@ const Hero: React.FC = () => {
         />
         <div className="absolute left-0 right-0 top-[24%] flex-col text-center text-white font-bold">
           <p className="text-2xl md:text-3xl font-medium uppercase">spring</p>
-          <p className="text-5xl  md:text-7xl font-bold uppercase mt-2 md:pt-4">Collection</p>
+          <p className="text-5xl  md:text-7xl font-bold uppercase mt-2 md:pt-4">
+            Collection
+          </p>
           <p className="text-xl font-bold mt-2 mb-4">
             <span className="font-normal">Starts from</span> $39.99
           </p>
-          <button className="primary-btn">
-            Shop Now
-          </button>
+          <Link href={"/shop"} passHref>
+            <button className="primary-btn">Shop Now</button>
+          </Link>
         </div>
       </div>
 
       {/* Second Banner */}
-      <div className="h-[25vh] sm:h-[30vh] md:h-[35vh] col-span-5 lg:col-span-3 relative ">
+      <div className="h-[25vh] sm:h-[30vh] md:h-[35vh] max-h-[540px] col-span-5 lg:col-span-3 relative ">
         <Image
           src="/static/images/Hero2.jpeg"
           layout="fill"
@@ -43,16 +46,16 @@ const Hero: React.FC = () => {
             Furniture
           </p>
           <p className="text-lg  md:text-xl lg:text-lg font-bold mt-1 mb-4">
-            <span className="font-normal">Starts from</span> $39.99
+            <span className="font-normal">Starts from</span> $69.99
           </p>
-          <button className="primary-btn">
-            Shop Now
-          </button>
+          <Link href={"/shop"} passHref>
+            <button className="primary-btn">Shop Now</button>
+          </Link>
         </div>
       </div>
 
       {/* Third Banner */}
-      <div className="h-[25vh] sm:h-[30vh] md:h-[35vh] col-span-5 lg:col-span-2 relative ">
+      <div className="h-[25vh] sm:h-[30vh] md:h-[35vh] max-h-[540px] col-span-5 lg:col-span-2 relative ">
         <Image
           src="/static/images/Hero3.jpeg"
           layout="fill"
@@ -71,9 +74,9 @@ const Hero: React.FC = () => {
           <p className="text-lg  md:text-xl lg:text-lg font-bold mt-1 mb-4">
             <span className="font-normal">Starts from</span> $39.99
           </p>
-          <button className="primary-btn">
-            Shop Now
-          </button>
+          <Link href={"/shop"} passHref>
+            <button className="primary-btn">Shop Now</button>
+          </Link>
         </div>
       </div>
     </main>

@@ -35,10 +35,12 @@ const AddProduct = () => {
     setIsUploading(false);
     console.log("result: ", result);
     if (result.success) {
-      toast.success(result.message);
-      router.push({ query: { tab: "manage-products" } });
+      toast.success(result.message, { position: "bottom-center" });
+      setTimeout(() => {
+        router.reload();
+      }, 1000);
     } else {
-      toast.error(result.message);
+      toast.error(result.message, { position: "bottom-center" });
     }
   };
 
@@ -98,6 +100,7 @@ const AddProduct = () => {
             className="hidden"
             accept="image/*"
             ref={inputFile}
+            multiple
             onClick={(e) => {
               e.stopPropagation();
             }}

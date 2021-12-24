@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import CountdownDeal from "./CountdownDeal";
 
 const Marketing: React.FC = () => {
@@ -44,7 +45,9 @@ const NewArrivalDeal: React.FC = () => {
           <br />
           Office
         </h5>
-        <button className="primary-btn-dark mt-4">Shop Now</button>
+        <Link href={"/shop"} passHref>
+          <button className="primary-btn-dark mt-4">Shop Now</button>
+        </Link>
       </div>
     </div>
   );
@@ -80,7 +83,9 @@ const MarketingCard: React.FC<{
         >
           {title}
         </h5>
-        <button className="primary-btn mt-4 text-white">Shop Now</button>
+        <Link href={"/shop"} passHref>
+          <button className="primary-btn mt-4 text-white">Shop Now</button>
+        </Link>
       </div>
     </div>
   );

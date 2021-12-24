@@ -13,7 +13,7 @@ export const AddNewProduct = async (productData: any) => {
         const result = await setDoc(doc, {
             ...productData,
             images: productImages.fileUrls,
-            discount: parseInt(productData.discount),
+            discount: parseInt(productData.discount) || 0,
             price: parseInt(productData.price),
             finalPrice: parseInt(productData.finalPrice),
             date: Timestamp.now()
@@ -71,6 +71,18 @@ export const RemoveProduct = async (productId: string) => {
         console.error(e.message);
         return { success: false, message: e.message };
 
+    }
+}
+
+export const GetProductById = async (productID: string) => {
+    try {
+        const _ref = doc(db, `products/${productID}`);
+        const result = await getDoc(_ref);
+        return { exists: true, message: "Product Fetched Successfully!", data: result.data() };
+
+    } catch (e) {
+        console.error(e.message);
+        return { exists: false, message: e.message };
     }
 }
 
