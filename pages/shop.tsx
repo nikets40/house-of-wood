@@ -1,9 +1,11 @@
 import { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropdownButton from "../components/common/DropdownButton";
 import PageBanner from "../components/common/PageBanner";
 import ProductsGrid from "../components/common/ProductsGrid";
 import PriceRangeSlider from "../components/common/PriceRangeSlider";
+import { ProductData } from "../interfaces/allProducts";
+import { GetAllProducts } from "../lib/db-hooks";
 
 const Shop: NextPage = () => {
   const categories: FilterItemProps[] = [
@@ -24,6 +26,18 @@ const Shop: NextPage = () => {
     { name: "Kartell", noOfitems: 13 },
     { name: "American Signature", noOfitems: 7 },
   ];
+
+  const [products, setProducts] = useState<ProductData[]>([]);
+
+  const fetchProducts = async () => {
+    const productsResult = await GetAllProducts();
+    setProducts(productsResult.data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   const divider = <div className="w-full h-[1px] bg-gray-200 my-10" />;
   return (
     <div>
@@ -39,7 +53,9 @@ const Shop: NextPage = () => {
 
           <PriceRangeSlider min={100} max={1000} />
 
-          <button className="primary-btn text-white w-full rounded-full mt-10">Filter</button>
+          <button className="primary-btn text-white w-full rounded-full mt-10">
+            Filter
+          </button>
         </div>
 
         {/* right side */}
@@ -48,9 +64,8 @@ const Shop: NextPage = () => {
             <h3 className="text-3xl font-bold">Featured Products</h3>
             <DropdownButton title="Dropdown Button" />
           </div>
-
           <div className="mt-8" />
-          <ProductsGrid noOfItems={12} />
+          <ProductsGrid products={products} />
         </div>
       </div>
     </div>
@@ -99,4 +114,3 @@ const FilterList: React.FC<{ title: string; items: FilterItemProps[] }> = ({
     </div>
   );
 };
-
