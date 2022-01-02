@@ -3,6 +3,7 @@ import PageBanner from "../components/common/PageBanner";
 import Image from "next/dist/client/image";
 import React, { useState } from "react";
 import { XIcon } from "@heroicons/react/solid";
+import ProductQuantity from "../components/common/ProductQuantity";
 
 const Cart: NextPage = () => {
   return (
@@ -106,34 +107,3 @@ const CartItem: React.FC = () => {
   );
 };
 
-const ProductQuantity: React.FC = () => {
-  const [quantity, setQuantity] = useState(1);
-  const increment = () => {
-    setQuantity(quantity + 1);
-  };
-  const decrement = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
-  };
-  return (
-    <div className="flex items-center gap-2">
-      <p className="py-3 px-6 bg-gray-300 rounded text-xl ">
-        {"Quantity: "}
-        {quantity}
-      </p>
-      <div className="flex flex-col gap-1">
-        <div
-          onClick={increment}
-          className="bg-gray-300 px-2 rounded cursor-pointer"
-        >
-          <i className="arrow up h-2 w-2" />
-        </div>
-        <div
-          onClick={decrement}
-          className="bg-gray-300 px-2 rounded cursor-pointer"
-        >
-          <i className="arrow down h-2 w-2" />
-        </div>
-      </div>
-    </div>
-  );
-};

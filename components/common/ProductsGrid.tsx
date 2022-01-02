@@ -2,6 +2,10 @@ import Image from "next/image";
 import { Eye, Star } from "react-feather";
 import { StarIcon } from "@heroicons/react/solid";
 import { ProductData } from "../../interfaces/allProducts";
+import ProductQuickViewModal from "./ProductQuickViewModal";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface ProductGridProps {
   products?: ProductData[];
@@ -22,25 +26,41 @@ export const ProductCard: React.FC<{ productData: ProductData }> = ({
   productData,
 }) => {
   const rating = Math.floor(Math.random() * 6) + 1;
+  const [selectedProduct, setSelectedProduct] = useState<ProductData>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="group">
+      {/* Product Quick View Modal */}
+      {isModalOpen &&
+        ProductQuickViewModal({
+          product: selectedProduct,
+          onClose: () => setIsModalOpen(false),
+        })}
       {/* Image */}
-      <div className="relative aspect-w-1 aspect-h-1">
+      <div className="relative aspect-w-1 aspect-h-1 cur">
         <Image
           src={productData.images[0]}
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
           alt="Product"
+          onClick={() => router.push(`/product/${productData.id}`)}
         />
-        <div className="absolute w-14 h-12 left-[80%] top-[80%] flex items-center justify-center bg-white rounded-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 cursor-pointer">
+        {/* //TODO: Implement ProductQuickViewModal component */}
+        {/* <div
+          onClick={() => {
+            setSelectedProduct(productData);
+            setIsModalOpen(true);
+          }}
+          className="absolute w-14 h-12 left-[80%] top-[80%] flex items-center justify-center bg-white rounded-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 cursor-pointer"
+        >
           <Eye className="w-6 h-6" />
-        </div>
-
+        </div> */}
         <div
           className={`${
-            productData?.finalPrice ? "opacity-100" : "opacity-0"
+            productData?.discount > 0 ? "opacity-100" : "opacity-0"
           } absolute top-4 left-4 bg-primary text-white rounded flex items-center justify-center w-14 h-8`}
         >
           Sale
@@ -48,9 +68,13 @@ export const ProductCard: React.FC<{ productData: ProductData }> = ({
       </div>
       {/* ratings */}
       <Ratings rating={rating} />
-      <p className="font-bold text-left text-xl mt-3 line-clamp-2 hover:text-primary cursor-pointer">
-        {productData.name}
-      </p>
+      <Link href={`/product/${productData.id}`} passHref>
+        <a>
+          <p className="font-bold text-left text-xl mt-3 line-clamp-2 hover:text-primary cursor-pointer">
+            {productData.name}
+          </p>
+        </a>
+      </Link>
 
       <div className="flex justify-between items-end">
         <p className="font-semibold text-lg text-yellow-500 mt-4 text-left">
@@ -89,7 +113,7 @@ const ProductPrice: React.FC<{ price: number; finalPrice?: number }> = ({
 }) => {
   return (
     <>
-      {finalPrice ? (
+      {price != finalPrice ? (
         <span>
           <span className="line-through text-black">${price.toFixed(2)}</span>
           {" $"}

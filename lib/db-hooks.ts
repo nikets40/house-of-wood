@@ -78,7 +78,10 @@ export const GetProductById = async (productID: string) => {
     try {
         const _ref = doc(db, `products/${productID}`);
         const result = await getDoc(_ref);
-        return { exists: true, message: "Product Fetched Successfully!", data: result.data() };
+        if (result.data()) {
+            return { exists: true, message: "Product Fetched Successfully!", data: result.data() };
+        }
+        else throw new Error("Product Not Found!");
 
     } catch (e) {
         console.error(e.message);

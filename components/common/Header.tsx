@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const userData = useContext(UserContext);
 
   return (
-    <header className="bg-white sticky shadow-lg top-0 w-full flex items-center justify-between h-20 z-50 m-auto px-10 lg:px-20">
+    <header className="bg-white sticky shadow-lg top-0 w-full flex items-center justify-between h-20 z-10 m-auto px-10 lg:px-20">
       {/* Left Side of Navbar */}
       <div className="flex items-center">
         <Logo />
