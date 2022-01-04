@@ -1,6 +1,7 @@
 import { ProductData } from "../../interfaces/allProducts";
 import { CartState } from "../../interfaces/reduxInterfaces";
 import { ADD_TO_CART, REMOVE_FROM_CART, INCREMENT_PRODUCT_QUANTITY, DECREMENT_PRODUCT_QUANTITY } from "./cartActionTypes";
+import { REHYDRATE, PERSIST } from 'redux-persist'
 
 
 const intitalState: CartState = {
@@ -13,15 +14,17 @@ const cartReducer = (state = intitalState, action: any) => {
         case REMOVE_FROM_CART: return removeProductFromCart(state, action.payload);
         case INCREMENT_PRODUCT_QUANTITY: return incrementProductQuantity(state, action.payload);
         case DECREMENT_PRODUCT_QUANTITY: return decrementProductQuantity(state, action.payload);
+        default: return state;
     }
 }
 
 const addProductToCart = (state: CartState, product: ProductData) => {
+
     const products = [...state.products];
-    for(var i =0; i< products.length; i++){
-        if(products[i].id === product.id){
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === product.id) {
             console.log("product already in cart");
-            
+
             products[i].cartQuantity += 1;
             return {
                 ...state,
@@ -44,8 +47,8 @@ const removeProductFromCart = (state: CartState, productID: string) => {
 
 const incrementProductQuantity = (state: CartState, productID: string) => {
     const products = [...state.products];
-    for(var i =0; i< products.length; i++){
-        if(products[i].id === productID){
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === productID) {
             products[i].cartQuantity += 1;
             return {
                 ...state,
@@ -57,8 +60,8 @@ const incrementProductQuantity = (state: CartState, productID: string) => {
 
 const decrementProductQuantity = (state: CartState, productID: string) => {
     const products = [...state.products];
-    for(var i =0; i< products.length; i++){
-        if(products[i].id === productID){
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === productID) {
             products[i].cartQuantity -= 1;
             return {
                 ...state,

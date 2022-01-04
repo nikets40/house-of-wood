@@ -12,7 +12,9 @@ import ProgressBar from "@badrap/bar-of-progress";
 import Router, { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
-import store from "../redux/store";
+import {store, persistor} from "../redux/store";
+import { PersistGate } from 'redux-persist/integration/react'
+ 
 
 function MyApp({ Component, pageProps }: AppProps) {
   const progress = new ProgressBar({
@@ -37,6 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <UserContext.Provider value={userData}>
         <div>
           <Toaster />
@@ -53,6 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           {!isAdminPage && <Footer />}
         </div>
       </UserContext.Provider>
+      </PersistGate>
     </Provider>
   );
 }
