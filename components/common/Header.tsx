@@ -4,9 +4,11 @@ import React, { useContext } from "react";
 import { LogOut, Search, ShoppingCart, Menu } from "react-feather";
 import { UserContext } from "../../lib/context";
 import { logout } from "../../lib/auth-hooks";
+import { CartState } from "../../interfaces/reduxInterfaces";
+import { connect } from "react-redux";
 
-const Header: React.FC = () => {
-  const numberOfItemsInCart = 0;
+const Header: React.FC<{numberOfItemsInCart: number}> = ({numberOfItemsInCart}) => {
+  
 
   const userData = useContext(UserContext);
 
@@ -65,7 +67,6 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
 
 const Divider: React.FC<{ classname?: string }> = ({ classname = "" }) => {
   return <div className={`w-[1px] h-6 bg-black mx-2 lg:mx-8 ${classname}`} />;
@@ -125,3 +126,11 @@ const IconLink: React.FC<{
     </Link>
   );
 };
+
+const mapStateToProps = (state: CartState) => {
+  return {
+    numberOfItemsInCart: state?.products?.length ?? 0,
+  }
+}
+
+export default connect(mapStateToProps)(Header);

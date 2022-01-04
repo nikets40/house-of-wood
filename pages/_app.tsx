@@ -11,6 +11,8 @@ import { useUserData } from "../lib/auth-hooks";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router, { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const progress = new ProgressBar({
@@ -34,22 +36,24 @@ function MyApp({ Component, pageProps }: AppProps) {
   const isAdminPage = path.startsWith("/admin");
 
   return (
-    <UserContext.Provider value={userData}>
-      <div>
-        <Toaster />
-        <Head>
-          <link rel="shortcut icon" href="/favicon.png" />
-          <title>House of Wood</title>
-        </Head>
-        {!isAdminPage && showHeader && <Header />}
-        <div className={`${isAdminPage ? "" : "m-auto px-10 lg:px-20"}`}>
-          <Component {...pageProps} />
-          {showHeader && !isAdminPage && <MailinglistBanner />}
-        </div>
+    <Provider store={store}>
+      <UserContext.Provider value={userData}>
+        <div>
+          <Toaster />
+          <Head>
+            <link rel="shortcut icon" href="/favicon.png" />
+            <title>House of Wood</title>
+          </Head>
+          {!isAdminPage && showHeader && <Header />}
+          <div className={`${isAdminPage ? "" : "m-auto px-10 lg:px-20"}`}>
+            <Component {...pageProps} />
+            {showHeader && !isAdminPage && <MailinglistBanner />}
+          </div>
 
-        {!isAdminPage && <Footer />}
-      </div>
-    </UserContext.Provider>
+          {!isAdminPage && <Footer />}
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 }
 

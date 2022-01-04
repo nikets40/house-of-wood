@@ -1,109 +1,55 @@
 import { NextPage } from "next";
 import PageBanner from "../components/common/PageBanner";
-import Image from "next/dist/client/image";
 import React, { useState } from "react";
-import { XIcon } from "@heroicons/react/solid";
-import ProductQuantity from "../components/common/ProductQuantity";
+import { CartState } from "../interfaces/reduxInterfaces";
+import { connect } from "react-redux";
+import { ProductData } from "../interfaces/allProducts";
+import { removeFromCart } from "../redux";
+import ShoppingBag from "../components/cart/ShoppingBag";
+import CartTotal from "../components/cart/CartTotal";
 
-const Cart: NextPage = () => {
+interface CartPageProps {
+  products: ProductData[];
+  removeFromCart: (productID: string) => void;
+}
+
+const Cart: NextPage<CartPageProps> = ({ products, removeFromCart }) => {
+  const getCartTotal = () => {
+    let total = 0;
+    products.forEach((product) => {
+      total += product.finalPrice * product.cartQuantity;
+    });
+    return total;
+  };
   return (
     <div>
       <PageBanner page="Cart" />
 
       <div className="flex flex-col lg:flex-row gap-10 mt-20">
         {/* Shopping Bag */}
-        <ShoppingBag className="flex-grow" />
+        <ShoppingBag products={products} className="flex-grow" />
         {/* Cart total */}
 
-        <CartTotal className="flex-grow" />
+        <CartTotal totalPrice={getCartTotal()} className="flex-grow" />
       </div>
     </div>
   );
 };
 
-export default Cart;
 
-const ApplyCoupon: React.FC = () => {
-  return (
-    <div className="flex bg-gray-200 justify-between max-w-lg">
-      <input
-        type="text"
-        placeholder="Coupon Code"
-        maxLength={12}
-        className="outline-none bg-transparent px-4 py-3 text-lg"
-      />
-      <button className="py-3 text-lg bg-[#444] text-white px-10 active:scale-95 transition-all">
-        Apply Coupon
-      </button>
-    </div>
-  );
+
+const mapStateToProps = (state: CartState) => {
+  return {
+    products: state?.products ?? [],
+  };
 };
 
-const CartTotal: React.FC<{ className?: string }> = ({ className = "" }) => {
-  return (
-    <div className={className}>
-      <h4 className="text-3xl font-semibold text-[#444]">Cart Total</h4>
-      <div className="mt-4 px-5 rounded border border-gray-400 flex flex-col items-center text-center">
-        <div className="w-full flex justify-between px-5 pt-5 pb-2 text-xl font-semibold text-[#444]">
-          <p>Subtotal</p>
-          <p>$250.00</p>
-        </div>
-        <div className="w-full bg-gray-400 h-[1px] mt-2" />
-        <div className="w-full flex items-center justify-between px-5 pt-5 pb-2 text-xl font-semibold text-[#444]">
-          <p className="font-medium">Total</p>
-          <p className="text-3xl">$250.00</p>
-        </div>
-
-        <button className="w-full bg-[#444] text-white py-4 text-lg my-4 active:scale-95 transition-all">
-          Proceed to Checkout
-        </button>
-      </div>
-    </div>
-  );
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    removeFromCart: (productID: string) => {
+      dispatch(removeFromCart(productID));
+    },
+  };
 };
 
-const ShoppingBag: React.FC<{ className?: string }> = ({ className = "" }) => {
-  const divider = <div className="w-full h-[1px] bg-gray-300 my-8" />;
-  return (
-    <div className={className}>
-      <h4 className="text-3xl font-semibold text-[#444]">Shopping Bag</h4>
-      <div className="mt-4 rounded border border-gray-400 p-10 flex flex-col items-center text-center">
-        <div className="w-full block ">
-          <CartItem />
-          {divider}
-          <CartItem />
-          {divider}
-          <CartItem />
-        </div>
-      </div>
-      <div className="mt-6" />
-      <ApplyCoupon />
-    </div>
-  );
-};
-
-const CartItem: React.FC = () => {
-  return (
-    <div className="relative w-full flex flex-col sm:flex-row justify-between items-center gap-3">
-      <XIcon className="absolute sm:relative top-0 right-0  w-8 h-8 text-gray-700  cursor-pointer" />
-      <div className="relative w-[150px] h-[150px] sm:hidden md:inline-flex">
-        <Image
-          src="/static/images/product-sample.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt=""
-        />
-      </div>
-      <div>
-        <p className="mt-4 sm:mt-0 text-xl font-semibold text-[#1bb0ce]">
-          Aqua Globes
-        </p>
-        <p className="mt-0 text-lg font-semibold">Price: $125</p>
-      </div>
-      <div className="mt-2" />
-      <ProductQuantity />
-      <p className="mt-4 sm:mt-0 text-lg font-semibold">Total: $125</p>
-    </div>
-  );
-};
-
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

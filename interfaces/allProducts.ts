@@ -15,12 +15,13 @@ export interface ProductData {
     brand: string;
     published: boolean;
     date: Timestamp;
+    cartQuantity: number;
 }
 
 export const jsonToProductData = (json: any): ProductData => {
     const { images, id, name, quantity, price, discount, finalPrice, description, category, rating, brand,
         published, date }: ProductData = json;
-    return { images, id, name, quantity, price, discount, finalPrice, description, category, rating, brand, published, date };
+    return { images, id, name, quantity, price, discount, finalPrice, description, category, rating, brand, published, date, cartQuantity: 1 };
 
 
 }

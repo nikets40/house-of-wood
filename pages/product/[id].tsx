@@ -21,7 +21,10 @@ const ProductPage: NextPage<{ productResult: any }> = ({ productResult }) => {
       {productResult?.exists && product ? (
         <div className="mt-10 flex flex-col gap-10 md:flex-row">
           {/* Product Images */}
-          <ProductImagesSection images={product.images} className="md:w-1/2 max-w-2xl" />
+          <ProductImagesSection
+            images={product.images}
+            className="md:w-1/2 max-w-2xl"
+          />
           {/* Product Details */}
           <ProductDetailsSection product={product} className="md:w-1/2" />
         </div>
@@ -102,7 +105,9 @@ const ProductDetailsSection: React.FC<{
       </p>
       <p className="mt-2 line-clamp-6">{product.description}</p>
       <div className="flex flex-row items-center mt-4 gap-10">
-        <ProductQuantity />
+        {/* <ProductQuantity
+          productID={product.id}
+        /> */}
         <button className="primary-btn text-white">Add To Cart</button>
       </div>
       <div className="flex-grow" />

@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { HeartIcon as HeartIconFilled, XIcon, StarIcon } from "@heroicons/react/solid";
+import {
+  HeartIcon as HeartIconFilled,
+  XIcon,
+  StarIcon,
+} from "@heroicons/react/solid";
 import {
   HeartIcon as HeartIconOutlined,
   ShareIcon,
@@ -24,8 +28,10 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({
       <ModalView>
         {/* Content Box */}
         <div className="relative bg-white rounded w-[60vw] h-[50vh] mx-auto mt-[50vh] translate-y-[-50%] flex flex-row p-8 gap-8">
-
-          <XIcon onClick={onClose} className="absolute right-4 top-4 cursor-pointer text-gray-700 w-6 h-6"/>
+          <XIcon
+            onClick={onClose}
+            className="absolute right-4 top-4 cursor-pointer text-gray-700 w-6 h-6"
+          />
 
           {/* Product Images */}
 
@@ -56,10 +62,10 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({
             </p>
             <p className="mt-2 line-clamp-6">{product.description}</p>
             <div className="flex flex-row items-center mt-4 gap-10">
-              <ProductQuantity />
+              <ProductQuantity quantity={1} productID={product.id} />
               <button className="primary-btn text-white">Add To Cart</button>
             </div>
-            <div className="flex-grow"/>
+            <div className="flex-grow" />
             <div className="flex items-center justify-between">
               <p className="cursor-pointer">More Information</p>
               <div className="flex items-center gap-4">
@@ -69,7 +75,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({
             </div>
           </div>
         </div>
-        </ModalView>
+      </ModalView>
     </div>
   );
 };
