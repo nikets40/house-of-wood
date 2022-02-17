@@ -29,6 +29,7 @@
     "react-social-icons": "^5.6.1",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
+    "stripe": "^8.195.0",
     "ts-transformer-keys": "^0.4.3"
   },
   "devDependencies": {
