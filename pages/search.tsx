@@ -8,7 +8,6 @@ import { GetAllProducts } from "../lib/db-hooks";
 
 const Search: NextPage = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
   const fetchProducts = async () => {

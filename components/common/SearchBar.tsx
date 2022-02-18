@@ -19,6 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         className="outline-none border-b-2 border-black w-full"
         placeholder="Search"
         type="text"
+        autoFocus={true}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
